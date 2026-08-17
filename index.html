@@ -4,28 +4,29 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-      content="width=device-width,
-               initial-scale=1,
-               maximum-scale=1,
-               minimum-scale=1,
-               user-scalable=no,
-               viewport-fit=cover">
+content="width=device-width,
+initial-scale=1,
+maximum-scale=1,
+minimum-scale=1,
+user-scalable=no,
+viewport-fit=cover">
 
-<meta name="theme-color" content="#8b5cf6">
+<meta name="theme-color" content="#dca6df">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 
 <title>LifeOS</title>
 
 <style>
+
 :root{
-  --purple:#7650b8;
-  --purple2:#a56bd4;
-  --pink:#f0a9d1;
-  --deep:#241633;
-  --ink:#24172f;
-  --white:#fffaff;
-  --line:rgba(45,20,65,.35);
+  --ink:#18101f;
+  --purple:#8b5cae;
+  --purple-dark:#4c285e;
+  --pink:#f3b5d7;
+  --lav:#c9a4e5;
+  --glass:rgba(255,248,255,.34);
+  --glass2:rgba(255,250,255,.68);
 }
 
 *{
@@ -33,220 +34,583 @@
   -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
   margin:0;
   padding:0;
   width:100%;
   min-height:100%;
   overflow-x:hidden;
+
   touch-action:pan-y;
   overscroll-behavior-x:none;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
-               "Segoe UI",sans-serif;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "Segoe UI",
+    sans-serif;
+
   color:var(--ink);
 }
 
 body{
+
   background:
-    radial-gradient(circle at 15% 20%,
-      rgba(255,205,232,.95) 0%,
-      rgba(255,205,232,0) 32%),
-    radial-gradient(circle at 85% 25%,
-      rgba(196,154,242,.95) 0%,
-      rgba(196,154,242,0) 35%),
-    radial-gradient(circle at 50% 100%,
-      rgba(170,113,221,.85) 0%,
-      rgba(170,113,221,0) 45%),
-    linear-gradient(145deg,#ffd9eb,#d8b4ef 52%,#9c71d0);
+
+    radial-gradient(
+      ellipse at 12% 18%,
+      rgba(255,214,237,.95) 0%,
+      rgba(255,214,237,.55) 20%,
+      transparent 48%
+    ),
+
+    radial-gradient(
+      ellipse at 88% 20%,
+      rgba(199,157,234,.9) 0%,
+      rgba(199,157,234,.45) 24%,
+      transparent 50%
+    ),
+
+    radial-gradient(
+      ellipse at 35% 72%,
+      rgba(248,192,223,.9) 0%,
+      transparent 45%
+    ),
+
+    radial-gradient(
+      ellipse at 80% 82%,
+      rgba(177,133,220,.85) 0%,
+      transparent 48%
+    ),
+
+    linear-gradient(
+      135deg,
+      #f8cbe4 0%,
+      #e8c0e9 45%,
+      #b992dc 100%
+    );
+
+  background-attachment:fixed;
 }
 
-button,
-input,
-textarea{
-  font:inherit;
-}
 
-button{
-  border:0;
-  cursor:pointer;
-}
+/* APP */
 
 .app{
+
   width:100%;
-  max-width:720px;
+  max-width:760px;
   min-height:100vh;
+
   margin:auto;
+
   padding:
     max(28px,env(safe-area-inset-top))
-    18px
-    max(30px,env(safe-area-inset-bottom));
+    15px
+    max(35px,env(safe-area-inset-bottom));
+
 }
+
 
 /* HEADER */
 
 .header{
+
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  margin-bottom:8px;
+  align-items:center;
+
+  padding:3px 8px 0;
 }
 
 .brand{
+
   font-size:36px;
   font-weight:800;
-  letter-spacing:-1.5px;
+  letter-spacing:-2px;
 }
 
 .subtitle{
+
   margin-top:2px;
-  font-size:15px;
-  opacity:.68;
+
+  font-size:14px;
+  opacity:.62;
+
+  letter-spacing:.1px;
 }
 
 .home{
-  width:52px;
-  height:52px;
+
+  width:50px;
+  height:50px;
+
   border-radius:50%;
-  background:rgba(255,255,255,.7);
-  border:1px solid var(--line);
-  font-size:23px;
+
+  background:rgba(255,255,255,.52);
+
+  border:1px solid rgba(25,10,35,.35);
+
+  font-size:22px;
+
+  color:#673b86;
 }
+
 
 /* DATE */
 
 .datebar{
+
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:20px;
-  margin:18px 0 2px;
-}
 
-.datebar button{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  background:rgba(255,255,255,.55);
-  color:var(--deep);
-  font-size:26px;
+  gap:18px;
+
+  margin-top:16px;
 }
 
 .date{
+
   min-width:190px;
+
   text-align:center;
-  font-size:18px;
+
+  font-size:16px;
   font-weight:700;
 }
 
-/* MAIN GEOMETRY */
+.dateArrow{
 
-.orbit{
-  position:relative;
-  width:min(100%,610px);
-  aspect-ratio:1/1;
-  margin:5px auto 0;
+  width:42px;
+  height:42px;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.48);
+
+  border:1px solid rgba(25,10,35,.28);
+
+  font-size:27px;
+
+  color:var(--ink);
 }
 
-.core{
+
+/* COSMIC GEOMETRY */
+
+.geometry{
+
+  position:relative;
+
+  width:min(100%,650px);
+
+  aspect-ratio:1;
+
+  margin:8px auto 0;
+
+  filter:
+    drop-shadow(
+      0 20px 30px
+      rgba(72,35,90,.12)
+    );
+}
+
+
+/*
+   LARGE OUTER OCTAGON
+*/
+
+.octagon{
+
   position:absolute;
+
   left:50%;
   top:50%;
-  transform:translate(-50%,-50%);
-  width:43%;
-  aspect-ratio:1;
-  background:rgba(255,255,255,.10);
-  border:1.5px solid var(--line);
+
+  width:76%;
+  height:76%;
+
+  transform:
+    translate(-50%,-50%)
+    rotate(22.5deg);
+
+  border:
+    1.4px solid
+    rgba(25,12,30,.72);
+
   clip-path:polygon(
-    50% 0%,
-    70% 6%,
-    87% 20%,
-    97% 40%,
-    97% 60%,
-    87% 80%,
-    70% 94%,
-    50% 100%,
-    30% 94%,
-    13% 80%,
-    3% 60%,
-    3% 40%,
-    13% 20%,
-    30% 6%
+    30% 0%,
+    70% 0%,
+    100% 30%,
+    100% 70%,
+    70% 100%,
+    30% 100%,
+    0% 70%,
+    0% 30%
   );
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
+
+  background:
+    rgba(255,255,255,.035);
 }
 
-.score{
-  font-size:42px;
+
+/*
+   SECOND GEOMETRIC LAYER
+*/
+
+.octagon2{
+
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  width:61%;
+  height:61%;
+
+  transform:
+    translate(-50%,-50%)
+    rotate(-22.5deg);
+
+  border:
+    1px solid
+    rgba(25,12,30,.64);
+
+  clip-path:polygon(
+    25% 0%,
+    75% 0%,
+    100% 25%,
+    100% 75%,
+    75% 100%,
+    25% 100%,
+    0% 75%,
+    0% 25%
+  );
+}
+
+
+/*
+   STAR / DIAMOND
+*/
+
+.star{
+
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  width:68%;
+  height:68%;
+
+  transform:
+    translate(-50%,-50%)
+    rotate(45deg);
+
+  border:
+    1px solid
+    rgba(20,10,28,.68);
+
+  background:
+    rgba(255,255,255,.025);
+}
+
+
+/*
+   INNER STAR
+*/
+
+.star2{
+
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  width:48%;
+  height:48%;
+
+  transform:
+    translate(-50%,-50%)
+    rotate(45deg);
+
+  border:
+    1px solid
+    rgba(20,10,28,.72);
+}
+
+
+/*
+   CIRCULAR ORBITS
+*/
+
+.orbitCircle{
+
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  transform:translate(-50%,-50%);
+
+  border:
+    1px solid
+    rgba(25,10,30,.58);
+
+  border-radius:50%;
+}
+
+.orbit1{
+  width:73%;
+  height:73%;
+}
+
+.orbit2{
+  width:54%;
+  height:54%;
+}
+
+.orbit3{
+  width:34%;
+  height:34%;
+}
+
+
+/*
+   CENTRAL CORE
+*/
+
+.core{
+
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  transform:translate(-50%,-50%);
+
+  width:29%;
+  aspect-ratio:1;
+
+  border:
+    1.4px solid
+    rgba(20,8,28,.8);
+
+  border-radius:50%;
+
+  background:
+    rgba(255,244,255,.22);
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  backdrop-filter:blur(2px);
+}
+
+.coreScore{
+
+  font-size:36px;
   font-weight:800;
+
   line-height:1;
 }
 
-.scoreLabel{
-  margin-top:8px;
-  font-size:14px;
-  letter-spacing:1px;
-  opacity:.7;
+.coreLabel{
+
+  margin-top:7px;
+
+  font-size:10px;
+
+  letter-spacing:1.5px;
+
+  opacity:.68;
 }
+
+
+/* GEOMETRY LINES */
+
+.line{
+
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  width:82%;
+
+  height:1px;
+
+  background:
+    rgba(25,10,30,.42);
+
+  transform-origin:center;
+}
+
+.line1{
+  transform:translate(-50%,-50%) rotate(0deg);
+}
+
+.line2{
+  transform:translate(-50%,-50%) rotate(60deg);
+}
+
+.line3{
+  transform:translate(-50%,-50%) rotate(120deg);
+}
+
 
 /* METRICS */
 
 .metric{
+
   position:absolute;
-  width:94px;
-  text-align:center;
+
+  width:82px;
+
   transform:translate(-50%,-50%);
+
+  text-align:center;
+
+  z-index:10;
 }
 
-.metric:nth-child(2){left:50%;top:9%}
-.metric:nth-child(3){left:82%;top:24%}
-.metric:nth-child(4){left:91%;top:50%}
-.metric:nth-child(5){left:78%;top:77%}
-.metric:nth-child(6){left:50%;top:91%}
-.metric:nth-child(7){left:22%;top:77%}
-.metric:nth-child(8){left:9%;top:50%}
-.metric:nth-child(9){left:18%;top:24%}
 
-.metricCircle{
-  width:78px;
-  height:78px;
+/*
+  Positions around geometry
+*/
+
+.metric:nth-of-type(1){
+  left:50%;
+  top:9%;
+}
+
+.metric:nth-of-type(2){
+  left:82%;
+  top:25%;
+}
+
+.metric:nth-of-type(3){
+  left:91%;
+  top:50%;
+}
+
+.metric:nth-of-type(4){
+  left:78%;
+  top:77%;
+}
+
+.metric:nth-of-type(5){
+  left:50%;
+  top:91%;
+}
+
+.metric:nth-of-type(6){
+  left:22%;
+  top:77%;
+}
+
+.metric:nth-of-type(7){
+  left:9%;
+  top:50%;
+}
+
+.metric:nth-of-type(8){
+  left:18%;
+  top:25%;
+}
+
+
+/* METRIC CIRCLE */
+
+.metricButton{
+
+  width:68px;
+  height:68px;
+
   margin:auto;
+
   border-radius:50%;
-  background:rgba(255,250,255,.72);
-  border:1.5px solid var(--line);
+
+  background:
+    rgba(255,249,255,.47);
+
+  border:
+    1px solid
+    rgba(20,8,28,.65);
+
+  color:
+    #3d214b;
+
   display:flex;
-  align-items:center;
   justify-content:center;
-  font-size:25px;
-  font-weight:800;
-  color:#65439d;
-  box-shadow:0 8px 25px rgba(60,20,80,.08);
+  align-items:center;
+
+  font-size:22px;
+
+  font-weight:700;
+
+  transition:
+    transform .12s,
+    background .12s;
+}
+
+.metricButton:active{
+
+  transform:scale(.88);
+
+  background:
+    rgba(255,255,255,.8);
 }
 
 .metricName{
-  margin-top:7px;
-  font-size:13px;
+
+  margin-top:6px;
+
+  font-size:11px;
+
   font-weight:700;
+
+  letter-spacing:.2px;
 }
 
-/* NUMBER PICKER */
+
+/* PICKER */
 
 .picker{
-  display:none;
+
   position:fixed;
-  z-index:100;
+
+  z-index:1000;
+
   left:12px;
   right:12px;
+
   bottom:
-    max(18px,env(safe-area-inset-bottom));
-  background:rgba(48,26,67,.97);
-  border:1px solid rgba(255,255,255,.2);
-  border-radius:24px;
+    max(14px,env(safe-area-inset-bottom));
+
   padding:15px;
-  box-shadow:0 15px 50px rgba(30,10,45,.35);
-  backdrop-filter:blur(20px);
+
+  border-radius:24px;
+
+  background:
+    rgba(37,19,48,.96);
+
+  border:
+    1px solid
+    rgba(255,255,255,.18);
+
+  box-shadow:
+    0 20px 60px
+    rgba(30,10,40,.4);
+
+  backdrop-filter:blur(18px);
+
+  display:none;
 }
 
 .picker.show{
@@ -254,107 +618,176 @@ button{
 }
 
 .pickerTitle{
+
   color:white;
+
   text-align:center;
+
   font-size:14px;
-  margin-bottom:10px;
-  opacity:.8;
+
+  margin-bottom:11px;
+
+  opacity:.82;
 }
 
 .numbers{
+
   display:grid;
-  grid-template-columns:repeat(10,1fr);
+
+  grid-template-columns:
+    repeat(10,1fr);
+
   gap:5px;
 }
 
 .number{
+
+  min-width:0;
+
   aspect-ratio:1;
+
+  padding:0;
+
   border-radius:13px;
-  background:rgba(255,255,255,.12);
+
+  background:
+    rgba(255,255,255,.12);
+
   color:white;
+
+  font-size:15px;
+
   font-weight:800;
-  font-size:16px;
 }
 
 .number:active,
 .number.selected{
-  background:#c98be8;
-  color:#241633;
+
+  background:#c88ae6;
+
+  color:#28152f;
 }
 
-/* DAY CARD */
+
+/* CARD */
 
 .card{
-  margin-top:15px;
-  padding:22px;
-  border-radius:28px;
-  background:rgba(255,250,255,.82);
-  border:1px solid rgba(70,30,90,.18);
-  box-shadow:0 12px 40px rgba(70,25,90,.12);
+
+  margin-top:10px;
+
+  padding:21px;
+
+  border-radius:27px;
+
+  background:
+    rgba(255,250,255,.63);
+
+  border:
+    1px solid
+    rgba(40,15,50,.18);
+
+  box-shadow:
+    0 15px 40px
+    rgba(80,35,100,.10);
+
+  backdrop-filter:blur(12px);
 }
 
 .card h2{
+
   margin:0 0 8px;
-  font-size:25px;
+
+  font-size:24px;
 }
 
 .hint{
-  color:#66566d;
-  font-size:14px;
-  margin-bottom:13px;
+
+  font-size:13px;
+
+  color:#604d69;
+
+  margin-bottom:12px;
 }
 
 textarea{
-  width:100%;
-  min-height:90px;
-  resize:none;
-  border:1px solid #cfb4dd;
-  border-radius:18px;
-  padding:15px;
-  outline:none;
-  background:rgba(255,255,255,.7);
-  color:var(--ink);
-}
 
-textarea:focus{
-  border-color:#8758b8;
+  width:100%;
+
+  min-height:88px;
+
+  resize:none;
+
+  border-radius:18px;
+
+  border:
+    1px solid
+    rgba(90,45,110,.3);
+
+  background:
+    rgba(255,255,255,.55);
+
+  padding:14px;
+
+  color:var(--ink);
+
+  outline:none;
 }
 
 .save{
+
   width:100%;
-  margin-top:14px;
+
+  margin-top:13px;
+
   padding:15px;
+
   border-radius:17px;
-  background:#63399b;
+
+  background:#633b82;
+
   color:white;
+
+  font-size:16px;
+
   font-weight:800;
-  font-size:17px;
 }
 
 .save:active{
   transform:scale(.98);
 }
 
+
 /* HISTORY */
 
-.history{
-  margin-top:15px;
-}
-
 .historyTitle{
-  font-size:23px;
+
+  font-size:22px;
+
   font-weight:800;
-  margin-bottom:12px;
+
+  margin-bottom:11px;
 }
 
 .historyItem{
+
   display:flex;
-  align-items:center;
+
   justify-content:space-between;
-  padding:14px 16px;
+
+  align-items:center;
+
+  padding:14px 15px;
+
   margin-bottom:8px;
-  border-radius:17px;
-  background:rgba(255,255,255,.65);
+
+  border-radius:16px;
+
+  background:
+    rgba(255,255,255,.48);
+
+  border:
+    1px solid
+    rgba(60,25,70,.12);
 }
 
 .historyDate{
@@ -362,153 +795,338 @@ textarea:focus{
 }
 
 .historyScore{
+
   font-weight:800;
-  color:#7047a8;
+
+  color:#643b86;
 }
 
-/* MOBILE */
 
-@media(max-width:430px){
-  .app{
-    padding-left:12px;
-    padding-right:12px;
-  }
+/* SMALL IPHONES */
+
+@media(max-width:390px){
 
   .brand{
     font-size:32px;
   }
 
-  .orbit{
-    width:100%;
+  .geometry{
+    width:104%;
+    margin-left:-2%;
   }
 
   .metric{
-    width:75px;
+    width:72px;
   }
 
-  .metricCircle{
-    width:65px;
-    height:65px;
-    font-size:21px;
+  .metricButton{
+    width:61px;
+    height:61px;
+    font-size:20px;
   }
 
   .metricName{
-    font-size:11px;
+    font-size:10px;
   }
 
-  .score{
-    font-size:34px;
+  .core{
+    width:27%;
   }
+
+  .coreScore{
+    font-size:31px;
+  }
+
 }
+
+
+/* NO ZOOM */
+
+input,
+textarea,
+button{
+  touch-action:manipulation;
+}
+
 </style>
 </head>
+
 
 <body>
 
 <div class="app">
 
+
+  <!-- HEADER -->
+
   <div class="header">
+
     <div>
       <div class="brand">LifeOS</div>
-      <div class="subtitle">One day. Eight dimensions. One picture.</div>
+
+      <div class="subtitle">
+        One day. Eight dimensions. One picture.
+      </div>
     </div>
 
-    <button class="home" onclick="goToday()">⌂</button>
+    <button
+      class="home"
+      onclick="goToday()">
+      ◇
+    </button>
+
   </div>
+
+
+  <!-- DATE -->
 
   <div class="datebar">
-    <button onclick="changeDay(-1)">‹</button>
-    <div class="date" id="date"></div>
-    <button onclick="changeDay(1)">›</button>
+
+    <button
+      class="dateArrow"
+      onclick="changeDay(-1)">
+      ‹
+    </button>
+
+    <div
+      class="date"
+      id="date">
+    </div>
+
+    <button
+      class="dateArrow"
+      onclick="changeDay(1)">
+      ›
+    </button>
+
   </div>
 
-  <div class="orbit">
+
+  <!-- GEOMETRY -->
+
+  <div class="geometry">
+
+
+    <!-- geometry -->
+
+    <div class="octagon"></div>
+
+    <div class="octagon2"></div>
+
+    <div class="star"></div>
+
+    <div class="star2"></div>
+
+    <div class="orbitCircle orbit1"></div>
+
+    <div class="orbitCircle orbit2"></div>
+
+    <div class="orbitCircle orbit3"></div>
+
+    <div class="line line1"></div>
+    <div class="line line2"></div>
+    <div class="line line3"></div>
+
+
+    <!-- CENTER -->
 
     <div class="core">
-      <div class="score" id="score">—</div>
-      <div class="scoreLabel">DAY SCORE</div>
+
+      <div
+        class="coreScore"
+        id="score">
+        —
+      </div>
+
+      <div class="coreLabel">
+        DAY SCORE
+      </div>
+
     </div>
 
-    <div class="metric" data-index="0">
-      <div class="metricCircle" id="m0">—</div>
-      <div class="metricName">Sleep</div>
+
+    <!-- METRICS -->
+
+
+    <div
+      class="metric"
+      data-index="0">
+
+      <button class="metricButton" id="m0">
+        —
+      </button>
+
+      <div class="metricName">
+        Sleep
+      </div>
+
     </div>
 
-    <div class="metric" data-index="1">
-      <div class="metricCircle" id="m1">—</div>
-      <div class="metricName">Energy</div>
+
+    <div
+      class="metric"
+      data-index="1">
+
+      <button class="metricButton" id="m1">
+        —
+      </button>
+
+      <div class="metricName">
+        Energy
+      </div>
+
     </div>
 
-    <div class="metric" data-index="2">
-      <div class="metricCircle" id="m2">—</div>
-      <div class="metricName">Mood</div>
+
+    <div
+      class="metric"
+      data-index="2">
+
+      <button class="metricButton" id="m2">
+        —
+      </button>
+
+      <div class="metricName">
+        Mood
+      </div>
+
     </div>
 
-    <div class="metric" data-index="3">
-      <div class="metricCircle" id="m3">—</div>
-      <div class="metricName">Focus</div>
+
+    <div
+      class="metric"
+      data-index="3">
+
+      <button class="metricButton" id="m3">
+        —
+      </button>
+
+      <div class="metricName">
+        Focus
+      </div>
+
     </div>
 
-    <div class="metric" data-index="4">
-      <div class="metricCircle" id="m4">—</div>
-      <div class="metricName">Sport</div>
+
+    <div
+      class="metric"
+      data-index="4">
+
+      <button class="metricButton" id="m4">
+        —
+      </button>
+
+      <div class="metricName">
+        Sport
+      </div>
+
     </div>
 
-    <div class="metric" data-index="5">
-      <div class="metricCircle" id="m5">—</div>
-      <div class="metricName">Food</div>
+
+    <div
+      class="metric"
+      data-index="5">
+
+      <button class="metricButton" id="m5">
+        —
+      </button>
+
+      <div class="metricName">
+        Food
+      </div>
+
     </div>
 
-    <div class="metric" data-index="6">
-      <div class="metricCircle" id="m6">—</div>
-      <div class="metricName">Social</div>
+
+    <div
+      class="metric"
+      data-index="6">
+
+      <button class="metricButton" id="m6">
+        —
+      </button>
+
+      <div class="metricName">
+        Social
+      </div>
+
     </div>
 
-    <div class="metric" data-index="7">
-      <div class="metricCircle" id="m7">—</div>
-      <div class="metricName">Calm</div>
+
+    <div
+      class="metric"
+      data-index="7">
+
+      <button class="metricButton" id="m7">
+        —
+      </button>
+
+      <div class="metricName">
+        Calm
+      </div>
+
     </div>
+
 
   </div>
+
+
+  <!-- DAY CARD -->
 
   <div class="card">
 
-    <h2 id="dayTitle">Today</h2>
+    <h2 id="dayTitle">
+      Today
+    </h2>
 
     <div class="hint">
-      Tap a metric, then choose 1–10. One tap is enough.
+      Tap a metric → choose 1–10 → done.
     </div>
 
     <textarea
       id="note"
-      placeholder="Quick note about the day..."
-    ></textarea>
+      placeholder="A quick thought about your day...">
+    </textarea>
 
-    <button class="save" onclick="saveDay()">
+    <button
+      class="save"
+      onclick="saveDay()">
       Save this day
     </button>
 
   </div>
 
-  <div class="card history">
 
-    <div class="historyTitle">History</div>
+  <!-- HISTORY -->
+
+  <div class="card">
+
+    <div class="historyTitle">
+      History
+    </div>
 
     <div id="history"></div>
 
   </div>
 
+
 </div>
+
 
 <!-- NUMBER PICKER -->
 
-<div class="picker" id="picker">
+<div
+  class="picker"
+  id="picker">
 
-  <div class="pickerTitle" id="pickerTitle">
+  <div
+    class="pickerTitle"
+    id="pickerTitle">
     Choose a number
   </div>
 
   <div class="numbers">
+
     <button class="number" onclick="choose(1)">1</button>
     <button class="number" onclick="choose(2)">2</button>
     <button class="number" onclick="choose(3)">3</button>
@@ -519,15 +1137,18 @@ textarea:focus{
     <button class="number" onclick="choose(8)">8</button>
     <button class="number" onclick="choose(9)">9</button>
     <button class="number" onclick="choose(10)">10</button>
+
   </div>
 
 </div>
 
+
 <script>
 
-/* =========================
-   LIFEOS DATA
-========================= */
+
+/* ============================
+   LIFEOS
+============================ */
 
 const names = [
   "Sleep",
@@ -540,29 +1161,30 @@ const names = [
   "Calm"
 ];
 
-const KEY = "lifeos_days_v3";
+const KEY = "lifeos_days_v4";
 
-let data = JSON.parse(
-  localStorage.getItem(KEY) || "{}"
-);
+let data =
+  JSON.parse(
+    localStorage.getItem(KEY) || "{}"
+  );
 
 let viewDate = new Date();
+
 let activeMetric = null;
 
 
-/* =========================
+/* ============================
    DATE
-========================= */
+============================ */
 
-function dateKey(d){
-  const y = d.getFullYear();
-  const m = String(d.getMonth()+1).padStart(2,"0");
-  const day = String(d.getDate()).padStart(2,"0");
+function key(d){
 
-  return `${y}-${m}-${day}`;
+  return d.toISOString()
+    .slice(0,10);
+
 }
 
-function prettyDate(d){
+function pretty(d){
 
   return d.toLocaleDateString(
     undefined,
@@ -573,160 +1195,234 @@ function prettyDate(d){
       year:"numeric"
     }
   );
-}
-
-function isToday(d){
-
-  return dateKey(d) === dateKey(new Date());
 
 }
 
+function today(){
 
-/* =========================
-   GET DAY
-========================= */
+  return key(viewDate)
+    === key(new Date());
+
+}
+
+
+/* ============================
+   DAY
+============================ */
 
 function getDay(d){
 
-  const key = dateKey(d);
+  const k = key(d);
 
-  if(!data[key]){
-    data[key] = {
-      scores:Array(8).fill(null),
+  if(!data[k]){
+
+    data[k] = {
+
+      scores:
+        Array(8).fill(null),
+
       note:""
+
     };
+
   }
 
-  return data[key];
+  return data[k];
+
 }
 
 
-/* =========================
+/* ============================
    RENDER
-========================= */
+============================ */
 
 function render(){
 
-  const d = getDay(viewDate);
+  const d =
+    getDay(viewDate);
 
-  document.getElementById("date").textContent =
-    prettyDate(viewDate);
+  document.getElementById("date")
+    .textContent =
+    pretty(viewDate);
 
-  document.getElementById("dayTitle").textContent =
-    isToday(viewDate) ? "Today" : prettyDate(viewDate);
+  document.getElementById("dayTitle")
+    .textContent =
+    today()
+      ? "Today"
+      : pretty(viewDate);
+
 
   for(let i=0;i<8;i++){
 
-    document.getElementById("m"+i).textContent =
+    document.getElementById("m"+i)
+      .textContent =
       d.scores[i] ?? "—";
+
   }
 
+
   const valid =
-    d.scores.filter(v => v !== null);
+    d.scores.filter(
+      v => v !== null
+    );
+
 
   let score = "—";
 
-  if(valid.length){
-    const average =
-      valid.reduce((a,b)=>a+b,0) / valid.length;
 
-    score = Math.round(average * 10) + "%";
+  if(valid.length){
+
+    const avg =
+      valid.reduce(
+        (a,b)=>a+b,
+        0
+      ) / valid.length;
+
+    score =
+      Math.round(avg * 10)
+      + "%";
+
   }
 
-  document.getElementById("score").textContent =
+
+  document.getElementById("score")
+    .textContent =
     score;
 
-  document.getElementById("note").value =
+
+  document.getElementById("note")
+    .value =
     d.note || "";
 
+
   renderHistory();
+
 }
 
 
-/* =========================
+/* ============================
    METRIC CLICK
-========================= */
+============================ */
 
-document.querySelectorAll(".metric")
+document
+.querySelectorAll(".metric")
 .forEach(metric => {
 
-  metric.addEventListener("click", () => {
+  metric.addEventListener(
+    "click",
+    function(e){
 
-    activeMetric =
-      Number(metric.dataset.index);
+      e.stopPropagation();
 
-    document.getElementById("pickerTitle")
-      .textContent =
-      "Rate " + names[activeMetric];
+      activeMetric =
+        Number(
+          this.dataset.index
+        );
 
-    document.getElementById("picker")
-      .classList.add("show");
+      document
+        .getElementById(
+          "pickerTitle"
+        )
+        .textContent =
+        "Rate " +
+        names[activeMetric];
 
-  });
+      document
+        .getElementById("picker")
+        .classList
+        .add("show");
+
+    }
+  );
 
 });
 
 
-/* =========================
-   CHOOSE 1–10
-========================= */
+/* ============================
+   NUMBER
+============================ */
 
 function choose(value){
 
-  if(activeMetric === null) return;
+  if(activeMetric === null)
+    return;
 
-  const d = getDay(viewDate);
 
-  d.scores[activeMetric] = value;
+  const d =
+    getDay(viewDate);
 
-  data[dateKey(viewDate)] = d;
+
+  d.scores[
+    activeMetric
+  ] = value;
+
+
+  data[
+    key(viewDate)
+  ] = d;
+
 
   localStorage.setItem(
     KEY,
     JSON.stringify(data)
   );
 
-  document.getElementById("picker")
-    .classList.remove("show");
+
+  document
+    .getElementById("picker")
+    .classList
+    .remove("show");
+
 
   activeMetric = null;
 
+
   render();
+
 }
 
 
-/* =========================
-   SAVE DAY
-========================= */
+/* ============================
+   SAVE
+============================ */
 
 function saveDay(){
 
-  const d = getDay(viewDate);
+  const d =
+    getDay(viewDate);
+
 
   d.note =
-    document.getElementById("note").value;
+    document
+      .getElementById("note")
+      .value;
 
-  data[dateKey(viewDate)] = d;
+
+  data[
+    key(viewDate)
+  ] = d;
+
 
   localStorage.setItem(
     KEY,
     JSON.stringify(data)
   );
 
+
   render();
 
-  alert("Day saved ✓");
 }
 
 
-/* =========================
-   CHANGE DAY
-========================= */
+/* ============================
+   NAVIGATION
+============================ */
 
 function changeDay(amount){
 
   viewDate.setDate(
-    viewDate.getDate() + amount
+    viewDate.getDate()
+    + amount
   );
 
   render();
@@ -735,16 +1431,14 @@ function changeDay(amount){
     top:0,
     behavior:"smooth"
   });
+
 }
 
 
-/* =========================
-   TODAY
-========================= */
-
 function goToday(){
 
-  viewDate = new Date();
+  viewDate =
+    new Date();
 
   render();
 
@@ -752,105 +1446,141 @@ function goToday(){
     top:0,
     behavior:"smooth"
   });
+
 }
 
 
-/* =========================
+/* ============================
    HISTORY
-========================= */
+============================ */
 
 function renderHistory(){
 
   const box =
-    document.getElementById("history");
+    document.getElementById(
+      "history"
+    );
+
 
   const keys =
     Object.keys(data)
       .sort()
       .reverse();
 
+
   if(!keys.length){
 
     box.innerHTML =
-      "<div style='opacity:.6'>No saved days yet.</div>";
+      "<div style='opacity:.55'>No saved days yet.</div>";
 
     return;
+
   }
+
 
   box.innerHTML = "";
 
-  keys.slice(0,30).forEach(key => {
 
-    const d = data[key];
+  keys
+    .slice(0,60)
+    .forEach(k => {
 
-    const valid =
-      d.scores.filter(v => v !== null);
+      const d =
+        data[k];
 
-    let score = "—";
 
-    if(valid.length){
-
-      const avg =
-        valid.reduce((a,b)=>a+b,0) / valid.length;
-
-      score =
-        Math.round(avg * 10) + "%";
-    }
-
-    const item =
-      document.createElement("div");
-
-    item.className =
-      "historyItem";
-
-    item.innerHTML = `
-      <div class="historyDate">
-        ${formatHistoryDate(key)}
-      </div>
-
-      <div class="historyScore">
-        ${score}
-      </div>
-    `;
-
-    item.onclick = () => {
-
-      const parts = key.split("-");
-
-      viewDate =
-        new Date(
-          Number(parts[0]),
-          Number(parts[1])-1,
-          Number(parts[2])
+      const valid =
+        d.scores.filter(
+          v => v !== null
         );
 
-      render();
 
-      window.scrollTo({
-        top:0,
-        behavior:"smooth"
-      });
+      let score = "—";
 
-    };
 
-    box.appendChild(item);
+      if(valid.length){
 
-  });
+        const avg =
+          valid.reduce(
+            (a,b)=>a+b,
+            0
+          ) / valid.length;
+
+        score =
+          Math.round(avg * 10)
+          + "%";
+
+      }
+
+
+      const item =
+        document.createElement(
+          "div"
+        );
+
+
+      item.className =
+        "historyItem";
+
+
+      item.innerHTML = `
+
+        <div class="historyDate">
+          ${formatHistory(k)}
+        </div>
+
+        <div class="historyScore">
+          ${score}
+        </div>
+
+      `;
+
+
+      item.onclick = () => {
+
+        const p =
+          k.split("-");
+
+
+        viewDate =
+          new Date(
+            Number(p[0]),
+            Number(p[1])-1,
+            Number(p[2])
+          );
+
+
+        render();
+
+
+        window.scrollTo({
+          top:0,
+          behavior:"smooth"
+        });
+
+      };
+
+
+      box.appendChild(item);
+
+    });
 
 }
 
 
-function formatHistoryDate(key){
+function formatHistory(k){
 
-  const parts =
-    key.split("-");
+  const p =
+    k.split("-");
+
 
   const d =
     new Date(
-      Number(parts[0]),
-      Number(parts[1])-1,
-      Number(parts[2])
+      Number(p[0]),
+      Number(p[1])-1,
+      Number(p[2])
     );
+
 
   return d.toLocaleDateString(
     undefined,
@@ -864,58 +1594,43 @@ function formatHistoryDate(key){
 }
 
 
-/* =========================
+/* ============================
    CLOSE PICKER
-========================= */
-
-document.addEventListener("click", e => {
-
-  const picker =
-    document.getElementById("picker");
-
-  if(
-    picker.classList.contains("show") &&
-    !picker.contains(e.target) &&
-    !e.target.closest(".metric")
-  ){
-
-    picker.classList.remove("show");
-
-    activeMetric = null;
-
-  }
-
-});
-
-
-/* =========================
-   PREVENT DOUBLE-TAP ZOOM
-========================= */
-
-let lastTouch = 0;
+============================ */
 
 document.addEventListener(
-  "touchend",
+  "click",
   function(e){
 
-    const now = Date.now();
+    const picker =
+      document.getElementById(
+        "picker"
+      );
 
-    if(now - lastTouch <= 300){
 
-      e.preventDefault();
+    if(
+      picker.classList.contains(
+        "show"
+      ) &&
+      !picker.contains(e.target) &&
+      !e.target.closest(".metric")
+    ){
+
+      picker.classList.remove(
+        "show"
+      );
+
+      activeMetric = null;
 
     }
 
-    lastTouch = now;
-
-  },
-  {passive:false}
+  }
 );
 
 
-/* =========================
+/* ============================
    START
-========================= */
+============================ */
 
 render();
 
