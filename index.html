@@ -4,29 +4,33 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width,
-initial-scale=1,
-maximum-scale=1,
-minimum-scale=1,
-user-scalable=no,
-viewport-fit=cover">
+      content="width=device-width,
+               initial-scale=1,
+               maximum-scale=1,
+               minimum-scale=1,
+               user-scalable=no,
+               viewport-fit=cover">
 
-<meta name="theme-color" content="#dca6df">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <title>LifeOS</title>
 
 <style>
-
 :root{
-  --ink:#18101f;
-  --purple:#8b5cae;
-  --purple-dark:#4c285e;
-  --pink:#f3b5d7;
-  --lav:#c9a4e5;
-  --glass:rgba(255,248,255,.34);
-  --glass2:rgba(255,250,255,.68);
+  --bg:#090612;
+  --bg2:#120b22;
+  --panel:#110c20;
+  --panel2:#171027;
+  --line:rgba(255,255,255,.16);
+  --line2:rgba(255,255,255,.08);
+  --text:#f7efff;
+  --muted:#a79bb8;
+  --pink:#f19bdc;
+  --pink2:#d96bc5;
+  --purple:#8e65d8;
+  --blue:#7c69d9;
+  --green:#79d6a1;
 }
 
 *{
@@ -34,1607 +38,326 @@ viewport-fit=cover">
   -webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
+html,body{
   margin:0;
   padding:0;
   width:100%;
   min-height:100%;
-  overflow-x:hidden;
-
-  touch-action:pan-y;
-  overscroll-behavior-x:none;
-
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Display",
-    "Segoe UI",
-    sans-serif;
-
-  color:var(--ink);
-}
-
-body{
-
-  background:
-
-    radial-gradient(
-      ellipse at 12% 18%,
-      rgba(255,214,237,.95) 0%,
-      rgba(255,214,237,.55) 20%,
-      transparent 48%
-    ),
-
-    radial-gradient(
-      ellipse at 88% 20%,
-      rgba(199,157,234,.9) 0%,
-      rgba(199,157,234,.45) 24%,
-      transparent 50%
-    ),
-
-    radial-gradient(
-      ellipse at 35% 72%,
-      rgba(248,192,223,.9) 0%,
-      transparent 45%
-    ),
-
-    radial-gradient(
-      ellipse at 80% 82%,
-      rgba(177,133,220,.85) 0%,
-      transparent 48%
-    ),
-
-    linear-gradient(
-      135deg,
-      #f8cbe4 0%,
-      #e8c0e9 45%,
-      #b992dc 100%
-    );
-
-  background-attachment:fixed;
-}
-
-
-/* APP */
-
-.app{
-
-  width:100%;
-  max-width:760px;
-  min-height:100vh;
-
-  margin:auto;
-
-  padding:
-    max(28px,env(safe-area-inset-top))
-    15px
-    max(35px,env(safe-area-inset-bottom));
-
-}
-
-
-/* HEADER */
-
-.header{
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  padding:3px 8px 0;
-}
-
-.brand{
-
-  font-size:36px;
-  font-weight:800;
-  letter-spacing:-2px;
-}
-
-.subtitle{
-
-  margin-top:2px;
-
-  font-size:14px;
-  opacity:.62;
-
-  letter-spacing:.1px;
-}
-
-.home{
-
-  width:50px;
-  height:50px;
-
-  border-radius:50%;
-
-  background:rgba(255,255,255,.52);
-
-  border:1px solid rgba(25,10,35,.35);
-
-  font-size:22px;
-
-  color:#673b86;
-}
-
-
-/* DATE */
-
-.datebar{
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  gap:18px;
-
-  margin-top:16px;
-}
-
-.date{
-
-  min-width:190px;
-
-  text-align:center;
-
-  font-size:16px;
-  font-weight:700;
-}
-
-.dateArrow{
-
-  width:42px;
-  height:42px;
-
-  border-radius:50%;
-
-  background:rgba(255,255,255,.48);
-
-  border:1px solid rgba(25,10,35,.28);
-
-  font-size:27px;
-
-  color:var(--ink);
-}
-
-
-/* COSMIC GEOMETRY */
-
-.geometry{
-
-  position:relative;
-
-  width:min(100%,650px);
-
-  aspect-ratio:1;
-
-  margin:8px auto 0;
-
-  filter:
-    drop-shadow(
-      0 20px 30px
-      rgba(72,35,90,.12)
-    );
-}
-
-
-/*
-   LARGE OUTER OCTAGON
-*/
-
-.octagon{
-
-  position:absolute;
-
-  left:50%;
-  top:50%;
-
-  width:76%;
-  height:76%;
-
-  transform:
-    translate(-50%,-50%)
-    rotate(22.5deg);
-
-  border:
-    1.4px solid
-    rgba(25,12,30,.72);
-
-  clip-path:polygon(
-    30% 0%,
-    70% 0%,
-    100% 30%,
-    100% 70%,
-    70% 100%,
-    30% 100%,
-    0% 70%,
-    0% 30%
-  );
-
-  background:
-    rgba(255,255,255,.035);
-}
-
-
-/*
-   SECOND GEOMETRIC LAYER
-*/
-
-.octagon2{
-
-  position:absolute;
-
-  left:50%;
-  top:50%;
-
-  width:61%;
-  height:61%;
-
-  transform:
-    translate(-50%,-50%)
-    rotate(-22.5deg);
-
-  border:
-    1px solid
-    rgba(25,12,30,.64);
-
-  clip-path:polygon(
-    25% 0%,
-    75% 0%,
-    100% 25%,
-    100% 75%,
-    75% 100%,
-    25% 100%,
-    0% 75%,
-    0% 25%
-  );
-}
-
-
-/*
-   STAR / DIAMOND
-*/
-
-.star{
-
-  position:absolute;
-
-  left:50%;
-  top:50%;
-
-  width:68%;
-  height:68%;
-
-  transform:
-    translate(-50%,-50%)
-    rotate(45deg);
-
-  border:
-    1px solid
-    rgba(20,10,28,.68);
-
-  background:
-    rgba(255,255,255,.025);
-}
-
-
-/*
-   INNER STAR
-*/
-
-.star2{
-
-  position:absolute;
-
-  left:50%;
-  top:50%;
-
-  width:48%;
-  height:48%;
-
-  transform:
-    translate(-50%,-50%)
-    rotate(45deg);
-
-  border:
-    1px solid
-    rgba(20,10,28,.72);
-}
-
-
-/*
-   CIRCULAR ORBITS
-*/
-
-.orbitCircle{
-
-  position:absolute;
-
-  left:50%;
-  top:50%;
-
-  transform:translate(-50%,-50%);
-
-  border:
-    1px solid
-    rgba(25,10,30,.58);
-
-  border-radius:50%;
-}
-
-.orbit1{
-  width:73%;
-  height:73%;
-}
-
-.orbit2{
-  width:54%;
-  height:54%;
-}
-
-.orbit3{
-  width:34%;
-  height:34%;
-}
-
-
-/*
-   CENTRAL CORE
-*/
-
-.core{
-
-  position:absolute;
-
-  left:50%;
-  top:50%;
-
-  transform:translate(-50%,-50%);
-
-  width:29%;
-  aspect-ratio:1;
-
-  border:
-    1.4px solid
-    rgba(20,8,28,.8);
-
-  border-radius:50%;
-
-  background:
-    rgba(255,244,255,.22);
-
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-
-  backdrop-filter:blur(2px);
-}
-
-.coreScore{
-
-  font-size:36px;
-  font-weight:800;
-
-  line-height:1;
-}
-
-.coreLabel{
-
-  margin-top:7px;
-
-  font-size:10px;
-
-  letter-spacing:1.5px;
-
-  opacity:.68;
-}
-
-
-/* GEOMETRY LINES */
-
-.line{
-
-  position:absolute;
-
-  left:50%;
-  top:50%;
-
-  width:82%;
-
-  height:1px;
-
-  background:
-    rgba(25,10,30,.42);
-
-  transform-origin:center;
-}
-
-.line1{
-  transform:translate(-50%,-50%) rotate(0deg);
-}
-
-.line2{
-  transform:translate(-50%,-50%) rotate(60deg);
-}
-
-.line3{
-  transform:translate(-50%,-50%) rotate(120deg);
-}
-
-
-/* METRICS */
-
-.metric{
-
-  position:absolute;
-
-  width:82px;
-
-  transform:translate(-50%,-50%);
-
-  text-align:center;
-
-  z-index:10;
-}
-
-
-/*
-  Positions around geometry
-*/
-
-.metric:nth-of-type(1){
-  left:50%;
-  top:9%;
-}
-
-.metric:nth-of-type(2){
-  left:82%;
-  top:25%;
-}
-
-.metric:nth-of-type(3){
-  left:91%;
-  top:50%;
-}
-
-.metric:nth-of-type(4){
-  left:78%;
-  top:77%;
-}
-
-.metric:nth-of-type(5){
-  left:50%;
-  top:91%;
-}
-
-.metric:nth-of-type(6){
-  left:22%;
-  top:77%;
-}
-
-.metric:nth-of-type(7){
-  left:9%;
-  top:50%;
-}
-
-.metric:nth-of-type(8){
-  left:18%;
-  top:25%;
-}
-
-
-/* METRIC CIRCLE */
-
-.metricButton{
-
-  width:68px;
-  height:68px;
-
-  margin:auto;
-
-  border-radius:50%;
-
-  background:
-    rgba(255,249,255,.47);
-
-  border:
-    1px solid
-    rgba(20,8,28,.65);
-
-  color:
-    #3d214b;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  font-size:22px;
-
-  font-weight:700;
-
-  transition:
-    transform .12s,
-    background .12s;
-}
-
-.metricButton:active{
-
-  transform:scale(.88);
-
-  background:
-    rgba(255,255,255,.8);
-}
-
-.metricName{
-
-  margin-top:6px;
-
-  font-size:11px;
-
-  font-weight:700;
-
-  letter-spacing:.2px;
-}
-
-
-/* PICKER */
-
-.picker{
-
-  position:fixed;
-
-  z-index:1000;
-
-  left:12px;
-  right:12px;
-
-  bottom:
-    max(14px,env(safe-area-inset-bottom));
-
-  padding:15px;
-
-  border-radius:24px;
-
-  background:
-    rgba(37,19,48,.96);
-
-  border:
-    1px solid
-    rgba(255,255,255,.18);
-
-  box-shadow:
-    0 20px 60px
-    rgba(30,10,40,.4);
-
-  backdrop-filter:blur(18px);
-
-  display:none;
-}
-
-.picker.show{
-  display:block;
-}
-
-.pickerTitle{
-
-  color:white;
-
-  text-align:center;
-
-  font-size:14px;
-
-  margin-bottom:11px;
-
-  opacity:.82;
-}
-
-.numbers{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(10,1fr);
-
-  gap:5px;
-}
-
-.number{
-
-  min-width:0;
-
-  aspect-ratio:1;
-
-  padding:0;
-
-  border-radius:13px;
-
-  background:
-    rgba(255,255,255,.12);
-
-  color:white;
-
-  font-size:15px;
-
-  font-weight:800;
-}
-
-.number:active,
-.number.selected{
-
-  background:#c88ae6;
-
-  color:#28152f;
-}
-
-
-/* CARD */
-
-.card{
-
-  margin-top:10px;
-
-  padding:21px;
-
-  border-radius:27px;
-
-  background:
-    rgba(255,250,255,.63);
-
-  border:
-    1px solid
-    rgba(40,15,50,.18);
-
-  box-shadow:
-    0 15px 40px
-    rgba(80,35,100,.10);
-
-  backdrop-filter:blur(12px);
-}
-
-.card h2{
-
-  margin:0 0 8px;
-
-  font-size:24px;
-}
-
-.hint{
-
-  font-size:13px;
-
-  color:#604d69;
-
-  margin-bottom:12px;
-}
-
-textarea{
-
-  width:100%;
-
-  min-height:88px;
-
-  resize:none;
-
-  border-radius:18px;
-
-  border:
-    1px solid
-    rgba(90,45,110,.3);
-
-  background:
-    rgba(255,255,255,.55);
-
-  padding:14px;
-
-  color:var(--ink);
-
-  outline:none;
-}
-
-.save{
-
-  width:100%;
-
-  margin-top:13px;
-
-  padding:15px;
-
-  border-radius:17px;
-
-  background:#633b82;
-
-  color:white;
-
-  font-size:16px;
-
-  font-weight:800;
-}
-
-.save:active{
-  transform:scale(.98);
-}
-
-
-/* HISTORY */
-
-.historyTitle{
-
-  font-size:22px;
-
-  font-weight:800;
-
-  margin-bottom:11px;
-}
-
-.historyItem{
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  padding:14px 15px;
-
-  margin-bottom:8px;
-
-  border-radius:16px;
-
-  background:
-    rgba(255,255,255,.48);
-
-  border:
-    1px solid
-    rgba(60,25,70,.12);
-}
-
-.historyDate{
-  font-weight:700;
-}
-
-.historyScore{
-
-  font-weight:800;
-
-  color:#643b86;
-}
-
-
-/* SMALL IPHONES */
-
-@media(max-width:390px){
-
-  .brand{
-    font-size:32px;
-  }
-
-  .geometry{
-    width:104%;
-    margin-left:-2%;
-  }
-
-  .metric{
-    width:72px;
-  }
-
-  .metricButton{
-    width:61px;
-    height:61px;
-    font-size:20px;
-  }
-
-  .metricName{
-    font-size:10px;
-  }
-
-  .core{
-    width:27%;
-  }
-
-  .coreScore{
-    font-size:31px;
-  }
-
-}
-
-
-/* NO ZOOM */
-
-input,
-textarea,
-button{
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
+               "Segoe UI",sans-serif;
+  overscroll-behavior:none;
   touch-action:manipulation;
 }
 
-</style>
-</head>
-
-
-<body>
-
-<div class="app">
-
-
-  <!-- HEADER -->
-
-  <div class="header">
-
-    <div>
-      <div class="brand">LifeOS</div>
-
-      <div class="subtitle">
-        One day. Eight dimensions. One picture.
-      </div>
-    </div>
-
-    <button
-      class="home"
-      onclick="goToday()">
-      ◇
-    </button>
-
-  </div>
-
-
-  <!-- DATE -->
-
-  <div class="datebar">
-
-    <button
-      class="dateArrow"
-      onclick="changeDay(-1)">
-      ‹
-    </button>
-
-    <div
-      class="date"
-      id="date">
-    </div>
-
-    <button
-      class="dateArrow"
-      onclick="changeDay(1)">
-      ›
-    </button>
-
-  </div>
-
-
-  <!-- GEOMETRY -->
-
-  <div class="geometry">
-
-
-    <!-- geometry -->
-
-    <div class="octagon"></div>
-
-    <div class="octagon2"></div>
-
-    <div class="star"></div>
-
-    <div class="star2"></div>
-
-    <div class="orbitCircle orbit1"></div>
-
-    <div class="orbitCircle orbit2"></div>
-
-    <div class="orbitCircle orbit3"></div>
-
-    <div class="line line1"></div>
-    <div class="line line2"></div>
-    <div class="line line3"></div>
-
-
-    <!-- CENTER -->
-
-    <div class="core">
-
-      <div
-        class="coreScore"
-        id="score">
-        —
-      </div>
-
-      <div class="coreLabel">
-        DAY SCORE
-      </div>
-
-    </div>
-
-
-    <!-- METRICS -->
-
-
-    <div
-      class="metric"
-      data-index="0">
-
-      <button class="metricButton" id="m0">
-        —
-      </button>
-
-      <div class="metricName">
-        Sleep
-      </div>
-
-    </div>
-
-
-    <div
-      class="metric"
-      data-index="1">
-
-      <button class="metricButton" id="m1">
-        —
-      </button>
-
-      <div class="metricName">
-        Energy
-      </div>
-
-    </div>
-
-
-    <div
-      class="metric"
-      data-index="2">
-
-      <button class="metricButton" id="m2">
-        —
-      </button>
-
-      <div class="metricName">
-        Mood
-      </div>
-
-    </div>
-
-
-    <div
-      class="metric"
-      data-index="3">
-
-      <button class="metricButton" id="m3">
-        —
-      </button>
-
-      <div class="metricName">
-        Focus
-      </div>
-
-    </div>
-
-
-    <div
-      class="metric"
-      data-index="4">
-
-      <button class="metricButton" id="m4">
-        —
-      </button>
-
-      <div class="metricName">
-        Sport
-      </div>
-
-    </div>
-
-
-    <div
-      class="metric"
-      data-index="5">
-
-      <button class="metricButton" id="m5">
-        —
-      </button>
-
-      <div class="metricName">
-        Food
-      </div>
-
-    </div>
-
-
-    <div
-      class="metric"
-      data-index="6">
-
-      <button class="metricButton" id="m6">
-        —
-      </button>
-
-      <div class="metricName">
-        Social
-      </div>
-
-    </div>
-
-
-    <div
-      class="metric"
-      data-index="7">
-
-      <button class="metricButton" id="m7">
-        —
-      </button>
-
-      <div class="metricName">
-        Calm
-      </div>
-
-    </div>
-
-
-  </div>
-
-
-  <!-- DAY CARD -->
-
-  <div class="card">
-
-    <h2 id="dayTitle">
-      Today
-    </h2>
-
-    <div class="hint">
-      Tap a metric → choose 1–10 → done.
-    </div>
-
-    <textarea
-      id="note"
-      placeholder="A quick thought about your day...">
-    </textarea>
-
-    <button
-      class="save"
-      onclick="saveDay()">
-      Save this day
-    </button>
-
-  </div>
-
-
-  <!-- HISTORY -->
-
-  <div class="card">
-
-    <div class="historyTitle">
-      History
-    </div>
-
-    <div id="history"></div>
-
-  </div>
-
-
-</div>
-
-
-<!-- NUMBER PICKER -->
-
-<div
-  class="picker"
-  id="picker">
-
-  <div
-    class="pickerTitle"
-    id="pickerTitle">
-    Choose a number
-  </div>
-
-  <div class="numbers">
-
-    <button class="number" onclick="choose(1)">1</button>
-    <button class="number" onclick="choose(2)">2</button>
-    <button class="number" onclick="choose(3)">3</button>
-    <button class="number" onclick="choose(4)">4</button>
-    <button class="number" onclick="choose(5)">5</button>
-    <button class="number" onclick="choose(6)">6</button>
-    <button class="number" onclick="choose(7)">7</button>
-    <button class="number" onclick="choose(8)">8</button>
-    <button class="number" onclick="choose(9)">9</button>
-    <button class="number" onclick="choose(10)">10</button>
-
-  </div>
-
-</div>
-
-
-<script>
-
-
-/* ============================
-   LIFEOS
-============================ */
-
-const names = [
-  "Sleep",
-  "Energy",
-  "Mood",
-  "Focus",
-  "Sport",
-  "Food",
-  "Social",
-  "Calm"
-];
-
-const KEY = "lifeos_days_v4";
-
-let data =
-  JSON.parse(
-    localStorage.getItem(KEY) || "{}"
-  );
-
-let viewDate = new Date();
-
-let activeMetric = null;
-
-
-/* ============================
-   DATE
-============================ */
-
-function key(d){
-
-  return d.toISOString()
-    .slice(0,10);
-
+body{
+  overflow-x:hidden;
 }
 
-function pretty(d){
-
-  return d.toLocaleDateString(
-    undefined,
-    {
-      weekday:"long",
-      day:"numeric",
-      month:"long",
-      year:"numeric"
-    }
-  );
-
+button,input,textarea{
+  font:inherit;
 }
 
-function today(){
-
-  return key(viewDate)
-    === key(new Date());
-
+button{
+  color:inherit;
 }
 
+.app{
+  min-height:100vh;
+  padding:
+    max(18px,env(safe-area-inset-top))
+    18px
+    max(90px,env(safe-area-inset-bottom))
+    18px;
 
-/* ============================
-   DAY
-============================ */
-
-function getDay(d){
-
-  const k = key(d);
-
-  if(!data[k]){
-
-    data[k] = {
-
-      scores:
-        Array(8).fill(null),
-
-      note:""
-
-    };
-
-  }
-
-  return data[k];
-
+  background:
+    radial-gradient(circle at 50% 28%,
+      rgba(123,74,174,.34),
+      transparent 32%),
+    radial-gradient(circle at 15% 72%,
+      rgba(81,45,127,.25),
+      transparent 35%),
+    radial-gradient(circle at 90% 55%,
+      rgba(53,38,118,.24),
+      transparent 35%),
+    linear-gradient(145deg,#06040b 0%,#10091c 42%,#17102c 100%);
 }
 
+/* ---------- HEADER ---------- */
 
-/* ============================
-   RENDER
-============================ */
-
-function render(){
-
-  const d =
-    getDay(viewDate);
-
-  document.getElementById("date")
-    .textContent =
-    pretty(viewDate);
-
-  document.getElementById("dayTitle")
-    .textContent =
-    today()
-      ? "Today"
-      : pretty(viewDate);
-
-
-  for(let i=0;i<8;i++){
-
-    document.getElementById("m"+i)
-      .textContent =
-      d.scores[i] ?? "—";
-
-  }
-
-
-  const valid =
-    d.scores.filter(
-      v => v !== null
-    );
-
-
-  let score = "—";
-
-
-  if(valid.length){
-
-    const avg =
-      valid.reduce(
-        (a,b)=>a+b,
-        0
-      ) / valid.length;
-
-    score =
-      Math.round(avg * 10)
-      + "%";
-
-  }
-
-
-  document.getElementById("score")
-    .textContent =
-    score;
-
-
-  document.getElementById("note")
-    .value =
-    d.note || "";
-
-
-  renderHistory();
-
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:8px;
 }
 
-
-/* ============================
-   METRIC CLICK
-============================ */
-
-document
-.querySelectorAll(".metric")
-.forEach(metric => {
-
-  metric.addEventListener(
-    "click",
-    function(e){
-
-      e.stopPropagation();
-
-      activeMetric =
-        Number(
-          this.dataset.index
-        );
-
-      document
-        .getElementById(
-          "pickerTitle"
-        )
-        .textContent =
-        "Rate " +
-        names[activeMetric];
-
-      document
-        .getElementById("picker")
-        .classList
-        .add("show");
-
-    }
-  );
-
-});
-
-
-/* ============================
-   NUMBER
-============================ */
-
-function choose(value){
-
-  if(activeMetric === null)
-    return;
-
-
-  const d =
-    getDay(viewDate);
-
-
-  d.scores[
-    activeMetric
-  ] = value;
-
-
-  data[
-    key(viewDate)
-  ] = d;
-
-
-  localStorage.setItem(
-    KEY,
-    JSON.stringify(data)
-  );
-
-
-  document
-    .getElementById("picker")
-    .classList
-    .remove("show");
-
-
-  activeMetric = null;
-
-
-  render();
-
+.navBtn{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(10,7,18,.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:27px;
+  color:#fff;
+  cursor:pointer;
 }
 
-
-/* ============================
-   SAVE
-============================ */
-
-function saveDay(){
-
-  const d =
-    getDay(viewDate);
-
-
-  d.note =
-    document
-      .getElementById("note")
-      .value;
-
-
-  data[
-    key(viewDate)
-  ] = d;
-
-
-  localStorage.setItem(
-    KEY,
-    JSON.stringify(data)
-  );
-
-
-  render();
-
+.navBtn:active{
+  transform:scale(.94);
+  background:rgba(241,155,220,.15);
 }
 
-
-/* ============================
-   NAVIGATION
-============================ */
-
-function changeDay(amount){
-
-  viewDate.setDate(
-    viewDate.getDate()
-    + amount
-  );
-
-  render();
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
+.dateBox{
+  text-align:center;
+  flex:1;
+  padding:0 8px;
 }
 
-
-function goToday(){
-
-  viewDate =
-    new Date();
-
-  render();
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
+.weekday{
+  color:#aaa0b5;
+  font-size:14px;
+  letter-spacing:.08em;
+  margin-bottom:3px;
 }
 
-
-/* ============================
-   HISTORY
-============================ */
-
-function renderHistory(){
-
-  const box =
-    document.getElementById(
-      "history"
-    );
-
-
-  const keys =
-    Object.keys(data)
-      .sort()
-      .reverse();
-
-
-  if(!keys.length){
-
-    box.innerHTML =
-      "<div style='opacity:.55'>No saved days yet.</div>";
-
-    return;
-
-  }
-
-
-  box.innerHTML = "";
-
-
-  keys
-    .slice(0,60)
-    .forEach(k => {
-
-      const d =
-        data[k];
-
-
-      const valid =
-        d.scores.filter(
-          v => v !== null
-        );
-
-
-      let score = "—";
-
-
-      if(valid.length){
-
-        const avg =
-          valid.reduce(
-            (a,b)=>a+b,
-            0
-          ) / valid.length;
-
-        score =
-          Math.round(avg * 10)
-          + "%";
-
-      }
-
-
-      const item =
-        document.createElement(
-          "div"
-        );
-
-
-      item.className =
-        "historyItem";
-
-
-      item.innerHTML = `
-
-        <div class="historyDate">
-          ${formatHistory(k)}
-        </div>
-
-        <div class="historyScore">
-          ${score}
-        </div>
-
-      `;
-
-
-      item.onclick = () => {
-
-        const p =
-          k.split("-");
-
-
-        viewDate =
-          new Date(
-            Number(p[0]),
-            Number(p[1])-1,
-            Number(p[2])
-          );
-
-
-        render();
-
-
-        window.scrollTo({
-          top:0,
-          behavior:"smooth"
-        });
-
-      };
-
-
-      box.appendChild(item);
-
-    });
-
+.date{
+  font-size:20px;
+  font-weight:700;
 }
 
-
-function formatHistory(k){
-
-  const p =
-    k.split("-");
-
-
-  const d =
-    new Date(
-      Number(p[0]),
-      Number(p[1])-1,
-      Number(p[2])
-    );
-
-
-  return d.toLocaleDateString(
-    undefined,
-    {
-      day:"numeric",
-      month:"short",
-      year:"numeric"
-    }
-  );
-
+.scoreLabel{
+  margin-top:18px;
+  text-align:center;
+  font-size:13px;
+  letter-spacing:.25em;
+  color:#d2c5da;
 }
 
+.score{
+  text-align:center;
+  font-size:76px;
+  line-height:.95;
+  font-weight:800;
+  color:var(--pink);
+  text-shadow:0 0 30px rgba(241,155,220,.22);
+  margin-top:8px;
+}
 
-/* ============================
-   CLOSE PICKER
-============================ */
+.dayMood{
+  text-align:center;
+  font-size:22px;
+  margin-top:10px;
+  color:#e8d9ed;
+}
 
-document.addEventListener(
-  "click",
-  function(e){
+/* ---------- RADAR ---------- */
 
-    const picker =
-      document.getElementById(
-        "picker"
-      );
+.radarArea{
+  position:relative;
+  width:100%;
+  max-width:700px;
+  margin:8px auto 0;
+  height:590px;
+}
 
+.radar{
+  position:absolute;
+  left:50%;
+  top:45px;
+  width:min(86vw,570px);
+  height:min(86vw,570px);
+  transform:translateX(-50%);
+}
 
-    if(
-      picker.classList.contains(
-        "show"
-      ) &&
-      !picker.contains(e.target) &&
-      !e.target.closest(".metric")
-    ){
+.radar svg{
+  width:100%;
+  height:100%;
+  overflow:visible;
+}
 
-      picker.classList.remove(
-        "show"
-      );
+.grid{
+  fill:none;
+  stroke:rgba(255,255,255,.15);
+  stroke-width:1;
+}
 
-      activeMetric = null;
+.axis{
+  stroke:rgba(255,255,255,.16);
+  stroke-width:1;
+}
 
-    }
+.dataArea{
+  fill:rgba(238,133,218,.10);
+  stroke:var(--pink);
+  stroke-width:2;
+  filter:drop-shadow(0 0 8px rgba(241,155,220,.35));
+}
 
-  }
-);
+.dataPoint{
+  fill:var(--pink);
+  filter:drop-shadow(0 0 7px rgba(241,155,220,.8));
+}
 
+.centerPoint{
+  fill:#f4b5e9;
+  stroke:#fff;
+  stroke-width:1;
+}
 
-/* ============================
-   START
-============================ */
+/* ---------- METRICS ---------- */
 
-render();
+.metric{
+  position:absolute;
+  width:108px;
+  text-align:center;
+  z-index:5;
+}
 
-</script>
+.metricTop{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  margin-bottom:2px;
+}
 
-</body>
-</html>
+.metricIcon{
+  font-size:18px;
+}
+
+.metricName{
+  font-size:15px;
+  color:#eee5f1;
+}
+
+.metricValue{
+  font-size:31px;
+  line-height:1;
+  font-weight:500;
+  margin:3px 0 3px;
+}
+
+.metricSub{
+  color:#94879e;
+  font-size:12px;
+}
+
+.metricControls{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-top:5px;
+}
+
+.smallBtn{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(8,5,15,.68);
+  color:#fff;
+  font-size:22px;
+  line-height:1;
+  cursor:pointer;
+}
+
+.smallBtn:active{
+  transform:scale(.9);
+  background:rgba(241,155,220,.18);
+}
+
+.metric.clickable .metricValue,
+.metric.clickable .metricName{
+  cursor:pointer;
+}
+
+/* Positions */
+
+.mSleep{
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.mEnergy{
+  top:103px;
+  right:-2px;
+}
+
+.mMood{
+  top:255px;
+  right:-7px;
+}
+
+.mFocus{
+  bottom:25px;
+  right:47px;
+}
+
+.mProductivity{
+  bottom:-10px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.mGoals{
+  bottom:25px;
+  left:47px;
+}
+
+.mHealth{
+  top:255px;
+  left:-7px;
+}
+
+.mSocial{
+  top:103px;
+  left:-2px;
+}
+
+/* ---------- SCORE INFO ---------- */
+
+.scoreInfo{
+  text-align:center;
+  color:#988ba4;
+  font-size:12px;
+  margin-top:-12px;
+}
+
+/* ---------- RECENT DAYS ---------- */
+
+.panel{
+  max-width:700px;
+  margin:20px auto 0;
+  background:rgba(12,8,23,.78);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:24px;
+  padding:20px;
+  backdrop-filter:blur(16px);
+  box-shadow:0 20px 60px rgba(0,0,0,.22);
+}
+
+.panelTitle{
+  font-size:19px;
+  font-weight:700;
+  letter-spacing:.05em;
+  margin-bottom:15px;
+}
+
+.days{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding-bottom:3px;
+  scrollbar-width:none;
+}
+
+.days::-webkit-scrollbar{
+  display:none;
+}
